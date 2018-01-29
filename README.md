@@ -10,7 +10,7 @@ As of right now, there is no right sqaures / wrong squares logic, but I want to 
 
 ## Server
 
-The server sidde is really just a websocket counter and some data logging to see how many players are online at what times, and to track some fun stats for me (public once I build a stats page)
+The server side is really just a websocket counter and some data logging to see how many players are online at what times, and to track some fun stats for me (public once I build a stats page)
 
 ##Pull Requests
 
