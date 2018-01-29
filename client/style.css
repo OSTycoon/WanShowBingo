@@ -1,0 +1,90 @@
+* {
+  font-family: 'Neucha', cursive;
+  padding: 0px;
+  margin: 0px;
+}
+body {
+    background-color: #555;
+    z-index: -1;
+}
+
+#back-img {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  background-image: url("images/back.jpg");
+  background-size: 130%;
+  background-position: center;
+  z-index: -2;
+  opacity: 0.2;
+  overflow: hidden;
+}
+
+#bodyWrapper {
+  width: 1000px;
+  display: block;
+  margin: 0px auto;
+  padding-top: 50px;
+}
+
+#game {
+  width: 100%;
+  display: inline-block;
+  background-color: #c13e05;
+  padding: 15px 10px;
+  float: left;
+  text-align: center;
+  color: white;
+  font-size: 14pt;
+  border-radius: 20px;
+  box-shadow: 10px 10px 12px -15px black;
+}
+#game p {
+  line-height: 30px;
+}
+#game a {
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.board {
+  width: 1000px;
+  margin: auto;
+  display: block;
+}
+
+.item {
+  display: table;
+  vertical-align: middle;
+  text-align: center;
+  width: 178px;
+  height: 153px;
+  border: 1px #c13e05 solid;
+  background-image: url("images/paper.png");
+  float: left;
+  color: black;
+  padding: 10px;
+}
+
+.item p {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 32pt;
+}
+
+.clicked {
+  background: #c13e05;
+  color: white;
+  border-color: #f0dddd;
+}

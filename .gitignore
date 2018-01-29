@@ -45,3 +45,13 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Server files are not ready for the wild yet. Sorry guys.
+server/
+
+# Not including socket.io dependencies or images. No need.
+images/
+socket.io/
+
+# Not including the next project. Those of you who watch Awesome Hardware might know what it is.
+bottle/
