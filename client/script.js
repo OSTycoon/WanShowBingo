@@ -6,9 +6,6 @@ $(function() {
       socket.on("updateCount", function (msg) {
         document.getElementById('playerCount').innerHTML = msg
       })
-
-  var spaces = [];
-
   //Populate
   var entries = [
     "Linus Hosts",
@@ -60,25 +57,29 @@ $(function() {
     "Someone messes with the set",
     "Linus: 'We've got a great show for you today!'"
   ];
-  var freeSpace = "***Free Space*** <br /><br /> Late";
-
+  var spaces = [];
   for (var i = 0; i < 25; i++) {
-    if (i == 12) {
-      spaces[i] = freeSpace;
+    if (i === 12) {
+      spaces[i] = "***Free Space*** \n\n Late";
     } else {
       var choice = Math.floor(Math.random() * entries.length);
-      console.log(choice);
       spaces[i] = entries[choice];
       entries.splice(choice, 1);
     }
   }
-  for (var i = 0; i < spaces.length; i++) {
-    if (i == 12) {
-      $(board).append("<div class='item clicked'><p>" + spaces[i] + "</p></div>");
-    } else {
-      $(board).append("<div class='item'><p>" + spaces[i] + "</p></div>");
+    // Draw the board
+    const board = $("#board");
+    for (i = 0; i < spaces.length; i++) {
+        var boardTile = document.createElement('div');
+        boardTile.classList.add('item');
+        var tileText = document.createElement('p');
+        tileText.innerText = spaces[i];
+        boardTile.appendChild(tileText);
+        if (i === 12) {
+            boardTile.classList.add('clicked');
+        }
+        board.append(boardTile);
     }
-  }
   //hide / unhide twitch
   $("#hideTwitch").click(function() {
     $("#stream").toggle();
@@ -95,10 +96,10 @@ $(function() {
   $(".item").click(function() {
     $(this).toggleClass("clicked");
       //Just watching some data for a bit. I'm working on a way to detect actual players from trolls and need some sample data.
-      var msg = $(this).children().html() + " : " + $(this).hasClass("clicked")
-      socket.emit('dataSend', msg)
+      var msg = $(this).children().html() + " : " + $(this).hasClass("clicked");
+      socket.emit('dataSend', msg);
 
-    //check for winnar! There is probably an algo for this...
+    //check for winner! There is probably an algo for this...
     var check = $(board).children();
 
     //ROWS
