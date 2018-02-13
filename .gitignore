@@ -55,3 +55,5 @@ socket.io/
 
 # Not including the next project. Those of you who watch Awesome Hardware might know what it is.
 bottle/
+
+.idea/
