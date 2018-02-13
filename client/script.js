@@ -100,129 +100,62 @@ $(function() {
       socket.emit('dataSend', msg);
 
     //check for winner! There is probably an algo for this...
-    var check = $(board).children();
+      var check = $(board).children();
 
-    //ROWS
+      function checkTiles(numbers) {
+          var count = 0;
+          // ... spreads the numbers from the array to be individual parameters
+          numbers.forEach(function (currentNumber) {
+              if ($(check[currentNumber]).hasClass("clicked")) {
+                  count++;
+              }
+          });
+          if (count === numbers.length) {
+            debugger;
+              return true;
+          }
+          return false;
+      }
 
-    if ($(check[0]).hasClass("clicked") &&
-    $(check[1]).hasClass("clicked") &&
-    $(check[2]).hasClass("clicked") &&
-    $(check[3]).hasClass("clicked") &&
-    $(check[4]).hasClass("clicked")) {
-      winner();
-    } else
-
-    if ($(check[5]).hasClass("clicked") &&
-    $(check[6]).hasClass("clicked") &&
-    $(check[7]).hasClass("clicked") &&
-    $(check[8]).hasClass("clicked") &&
-    $(check[9]).hasClass("clicked")
-    ) {
-      winner();
-    } else
-
-    if ($(check[10]).hasClass("clicked") &&
-    $(check[11]).hasClass("clicked") &&
-    $(check[12]).hasClass("clicked") &&
-    $(check[13]).hasClass("clicked") &&
-    $(check[14]).hasClass("clicked")
-    ) {
-      winner();
-    } else
-
-    if ($(check[15]).hasClass("clicked") &&
-    $(check[16]).hasClass("clicked") &&
-    $(check[17]).hasClass("clicked") &&
-    $(check[18]).hasClass("clicked") &&
-    $(check[19]).hasClass("clicked")
-    ) {
-      winner();
-    } else
-
-    if ($(check[20]).hasClass("clicked") &&
-    $(check[21]).hasClass("clicked") &&
-    $(check[22]).hasClass("clicked") &&
-    $(check[23]).hasClass("clicked") &&
-    $(check[24]).hasClass("clicked")
-    ) {
-      winner();
-    } else
-
-    //COLUMNS!
-
-    if ($(check[0]).hasClass("clicked") &&
-    $(check[5]).hasClass("clicked") &&
-    $(check[10]).hasClass("clicked") &&
-    $(check[15]).hasClass("clicked") &&
-    $(check[20]).hasClass("clicked")) {
-      winner();
-    } else
-
-    if ($(check[1]).hasClass("clicked") &&
-    $(check[6]).hasClass("clicked") &&
-    $(check[11]).hasClass("clicked") &&
-    $(check[16]).hasClass("clicked") &&
-    $(check[21]).hasClass("clicked")
-    ) {
-      winner();
-    } else
-
-    if ($(check[2]).hasClass("clicked") &&
-    $(check[7]).hasClass("clicked") &&
-    $(check[12]).hasClass("clicked") &&
-    $(check[17]).hasClass("clicked") &&
-    $(check[22]).hasClass("clicked")
-    ) {
-      winner();
-    } else
-
-    if ($(check[3]).hasClass("clicked") &&
-    $(check[8]).hasClass("clicked") &&
-    $(check[13]).hasClass("clicked") &&
-    $(check[18]).hasClass("clicked") &&
-    $(check[23]).hasClass("clicked")
-    ) {
-      winner();
-    } else
-
-    if ($(check[4]).hasClass("clicked") &&
-    $(check[9]).hasClass("clicked") &&
-    $(check[14]).hasClass("clicked") &&
-    $(check[19]).hasClass("clicked") &&
-    $(check[24]).hasClass("clicked")
-    ) {
-      winner();
-    } else
-
-    //CRISS CROSS
-    if ($(check[0]).hasClass("clicked") &&
-    $(check[6]).hasClass("clicked") &&
-    $(check[12]).hasClass("clicked") &&
-    $(check[18]).hasClass("clicked") &&
-    $(check[24]).hasClass("clicked")
-    ) {
-      winner();
-    } else
-
-    if ($(check[4]).hasClass("clicked") &&
-    $(check[8]).hasClass("clicked") &&
-    $(check[12]).hasClass("clicked") &&
-    $(check[16]).hasClass("clicked") &&
-    $(check[20]).hasClass("clicked")
-    ) {
-      winner();
-    } else {
-      loser();
-    }
-
-
+      //ROWS
+      if (checkTiles([0, 1, 2, 3, 4])) {
+          winner();
+      } else if (checkTiles([5, 6, 7, 8, 9])) {
+          winner();
+      } else if (checkTiles([10, 11, 12, 13, 14])) {
+          winner();
+      } else if (checkTiles([15, 16, 17, 18, 19])) {
+          winner();
+      } else if (checkTiles([20, 21, 22, 23, 24])) {
+          winner();
+      }
+      //COLUMNS!
+      else if (checkTiles([0, 5, 10, 15, 20])) {
+          winner();
+      } else if (checkTiles([1, 6, 11, 16, 21])) {
+          winner();
+      } else if (checkTiles([2, 7, 12, 17, 22])) {
+          winner();
+      } else if (checkTiles([3, 8, 13, 18, 21])) {
+          winner();
+      } else if (checkTiles([4, 9, 14, 19, 24])) {
+          winner();
+      }
+      //CRISS CROSS
+      else if (checkTiles([0, 6, 12, 18, 24])) {
+          winner();
+      } else if (checkTiles([4, 8, 12, 16, 20])) {
+          winner();
+      } else {
+          loser();
+      }
   });
+
   function loser() {
     $("#winner").addClass("hidden");
   }
 
   function winner() {
-    console.log("Winner!");
     $("#winner").removeClass("hidden");
   }
 
