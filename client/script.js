@@ -1,13 +1,13 @@
 $(function() {
 
   //WEB SOCKETS?!?!?!?!
-      var socket = io('http://socket.wanshowbingo.com');
+      const socket = io('http://socket.wanshowbingo.com');
 
       socket.on("updateCount", function (msg) {
         document.getElementById('playerCount').innerHTML = msg
-      })
+      });
   //Populate
-  var entries = [
+  const entries = [
     "Linus Hosts",
     "Linus ignores luke to change the topic",
     "Luke Hosts",
@@ -57,22 +57,22 @@ $(function() {
     "Someone messes with the set",
     "Linus: 'We've got a great show for you today!'"
   ];
-  var spaces = [];
-  for (var i = 0; i < 25; i++) {
+  let spaces = [];
+  for (let i = 0; i < 25; i++) {
     if (i === 12) {
       spaces[i] = "***Free Space*** \n\n Late";
     } else {
-      var choice = Math.floor(Math.random() * entries.length);
+      const choice = Math.floor(Math.random() * entries.length);
       spaces[i] = entries[choice];
       entries.splice(choice, 1);
     }
   }
     // Draw the board
     const board = $("#board");
-    for (i = 0; i < spaces.length; i++) {
-        var boardTile = document.createElement('div');
+    for (let i = 0; i < spaces.length; i++) {
+        const boardTile = document.createElement('div');
         boardTile.classList.add('item');
-        var tileText = document.createElement('p');
+        const tileText = document.createElement('p');
         tileText.innerText = spaces[i];
         boardTile.appendChild(tileText);
         if (i === 12) {
@@ -84,7 +84,7 @@ $(function() {
   $("#hideTwitch").click(function() {
     $("#stream").toggle();
     $("#game").toggleClass("toggledWide");
-    if($("#hideTwitch").html() == "Hide Twitch") {
+    if($("#hideTwitch").html() === "Hide Twitch") {
       $(this).html("Show Twitch");
     } else {
       $(this).html("Hide Twitch");
@@ -96,14 +96,14 @@ $(function() {
   $(".item").click(function() {
     $(this).toggleClass("clicked");
       //Just watching some data for a bit. I'm working on a way to detect actual players from trolls and need some sample data.
-      var msg = $(this).children().html() + " : " + $(this).hasClass("clicked");
+      const msg = $(this).children().html() + " : " + $(this).hasClass("clicked");
       socket.emit('dataSend', msg);
 
     //check for winner! There is probably an algo for this...
-      var check = $(board).children();
+      const check = $("#board").children();
 
       function checkTiles(numbers) {
-          var count = 0;
+          let count = 0;
           // ... spreads the numbers from the array to be individual parameters
           numbers.forEach(function (currentNumber) {
               if ($(check[currentNumber]).hasClass("clicked")) {
