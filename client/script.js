@@ -32,6 +32,7 @@ $(function() {
     "'Okay Google / Alexa / Siri' trolling'",
     "'PRERECORDED'",
     "No outro",
+    "No intro",
     "Mac Weldon",
     "James saying Frecschbuuks",
     "Linus eats hot jerky",
@@ -55,7 +56,10 @@ $(function() {
     "Luke 'Thats Hilarious!'",
     "Linus has 2 phones on his person",
     "Someone messes with the set",
-    "Linus: 'We've got a great show for you today!'"
+    "Linus: 'We've got a great show for you today!'",
+    "Audio suddenly too quiet/loud",
+    "Jerky-stealing drama",
+    "No actual news before sponsor spot"
   ];
   let spaces = [];
   for (let i = 0; i < 25; i++) {
